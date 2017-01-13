@@ -1,0 +1,8 @@
+{
+    "libicucore.tbd": 1,
+    "libz.tbd": 1,
+    "libstdc++.tbd": 1,
+    "JavaScriptCore.framework": 1,
+    "libsqlite3.tbd": 1,
+    "ImageIO.framework": 1
+}

@@ -1,0 +1,21 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "behring.cordovasharesdk"
+        },
+        "cordova-plugin-sharesdk": {
+            "SHARESDK_IOS_APP_KEY": "1ac170574223f",
+            "WECHAT_APP_ID": "wxca22f6f77bef4d1c",
+            "WECHAT_APP_SECRET": "8be67bd32710eb22ee0d8d5a38af4187",
+            "PACKAGE_NAME": "behring.cordovasharesdk"
+        }
+    },
+    "dependent_plugins": {}
+}
