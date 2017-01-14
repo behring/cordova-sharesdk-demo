@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "behring.cordovasharesdk"
-        },
         "cordova-plugin-sharesdk": {
             "SHARESDK_IOS_APP_KEY": "1ac170574223f",
             "WECHAT_APP_ID": "wxca22f6f77bef4d1c",
