@@ -12,6 +12,6 @@ h3 {
     justify-content: center;
 }
 
-button {
+button.btn.btn-primary {
     margin-bottom: 16px;
 }
