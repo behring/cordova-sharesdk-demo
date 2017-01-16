@@ -53,6 +53,7 @@ var app = {
 
 app.initialize();
 
+/** 分享纯文本 */
 function shareText(platformType) {
     var text='这是一条测试文本~~~~';
     var shareInfo = {text:text};
@@ -61,16 +62,18 @@ function shareText(platformType) {
                    function(fail){});
 }
 
+/** 分享图片，多张使用数组 */
 function shareImages(platformType) {
-    var images = ['http://www.mob.com/images/logo_black.png','https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png'];
+    var images = ['https://github.com/zhaolin0801/cordova-sharesdk-demo/blob/master/www/img/Wechat-QRcode.jpeg?raw=true','https://github.com/zhaolin0801/cordova-sharesdk-demo/blob/master/www/img/WechatIMG3.jpeg?raw=true'];
     var shareInfo = {images:images};
     sharesdk.share(platformType, ShareSDK.ShareType.Image, shareInfo,
                    function(success){},
                    function(fail){});
 }
 
+/** 分享网页 */
 function shareWebPage(platformType) {
-    var icon = 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png';
+    var icon = 'https://github.com/zhaolin0801/cordova-sharesdk-demo/blob/master/www/img/Wechat-QRcode.jpeg?raw=true';
     var title = '这是网页的标题';
     var text = '这是网页的内容，android未签名只能分享单张图片到朋友圈';
     var url = 'http://carhot.cn/articles/1';
