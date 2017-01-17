@@ -33,6 +33,8 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
+        var copyLinkButton = parentElement.querySelector('.btn-copy-link');
+        
         var textWechatSessionButton = parentElement.querySelector('.btn-text-wechat-session');
         var imageWechatSessionButton = parentElement.querySelector('.btn-image-wechat-session');
         var webPageWechatSessionButton = parentElement.querySelector('.btn-webpage-wechat-session');
@@ -40,6 +42,8 @@ var app = {
         var textWechatTimelineButton = parentElement.querySelector('.btn-text-wechat-timeline');
         var imageWechatTimelineButton = parentElement.querySelector('.btn-image-wechat-timeline');
         var webPageWechatTimelineButton = parentElement.querySelector('.btn-webpage-wechat-timeline');
+        
+        copyLinkButton.addEventListener('click',copyLink);
         
         textWechatSessionButton.addEventListener('click',shareTextToWechatSession);
         imageWechatSessionButton.addEventListener('click',shareImagesToWechatSession);
@@ -53,22 +57,25 @@ var app = {
 
 app.initialize();
 
+/** 拷贝连接 */
+function  copyLink() {
+    var text='https://github.com/zhaolin0801/cordova-plugin-sharesdk';
+    var shareInfo = {text:text};
+    sharesdk.share(ShareSDK.PlatformType.Copy, ShareSDK.ShareType.Text, shareInfo, success, fail);
+}
+
 /** 分享纯文本 */
 function shareText(platformType) {
     var text='这是一条测试文本~~~~';
     var shareInfo = {text:text};
-    sharesdk.share(platformType, ShareSDK.ShareType.Text, shareInfo,
-                   function(success){},
-                   function(fail){});
+    sharesdk.share(platformType, ShareSDK.ShareType.Text, shareInfo, success, fail);
 }
 
 /** 分享图片，多张使用数组 */
 function shareImages(platformType) {
     var images = ['https://github.com/zhaolin0801/cordova-sharesdk-demo/blob/master/www/img/Wechat-QRcode.jpeg?raw=true','https://github.com/zhaolin0801/cordova-sharesdk-demo/blob/master/www/img/WechatIMG3.jpeg?raw=true'];
     var shareInfo = {images:images};
-    sharesdk.share(platformType, ShareSDK.ShareType.Image, shareInfo,
-                   function(success){},
-                   function(fail){});
+    sharesdk.share(platformType, ShareSDK.ShareType.Image, shareInfo, success, fail);
 }
 
 /** 分享网页 */
@@ -78,9 +85,7 @@ function shareWebPage(platformType) {
     var text = '这是网页的内容，android未签名只能分享单张图片到朋友圈';
     var url = 'http://carhot.cn/articles/1';
     var shareInfo = {icon:icon, title:title, text:text, url:url};
-    sharesdk.share(platformType, ShareSDK.ShareType.WebPage, shareInfo,
-                   function(success){},
-                   function(fail){});
+    sharesdk.share(platformType, ShareSDK.ShareType.WebPage, shareInfo, success, fail);
 }
 
 function shareTextToWechatSession() {
@@ -106,4 +111,12 @@ function shareImagesToWechatTimeline() {
 
 function shareWebPageToWechatTimeline() {
     shareWebPage(ShareSDK.PlatformType.WechatTimeline);
+}
+
+function success() {
+    alert('sucessed!');
+}
+
+function fail(msg) {
+    alert('failed: ' + msg);
 }
