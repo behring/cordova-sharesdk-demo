@@ -34,31 +34,31 @@ var app = {
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
         var copyLinkButton = parentElement.querySelector('.btn-copy-link');
-        
+
         var textWechatSessionButton = parentElement.querySelector('.btn-text-wechat-session');
         var imageWechatSessionButton = parentElement.querySelector('.btn-image-wechat-session');
         var webPageWechatSessionButton = parentElement.querySelector('.btn-webpage-wechat-session');
-        
+
         var textWechatTimelineButton = parentElement.querySelector('.btn-text-wechat-timeline');
         var imageWechatTimelineButton = parentElement.querySelector('.btn-image-wechat-timeline');
         var webPageWechatTimelineButton = parentElement.querySelector('.btn-webpage-wechat-timeline');
-        
+
         var textWeiboButton = parentElement.querySelector('.btn-text-weibo');
         var imageWeiboButton = parentElement.querySelector('.btn-image-weibo');
         var webPageWeiboButton = parentElement.querySelector('.btn-webpage-weibo');
 
         copyLinkButton.addEventListener('click',copyLink);
-        
+
         textWechatSessionButton.addEventListener('click',shareTextToWechatSession);
-        imageWechatSessionButton.addEventListener('click',shareImagesToWechatSession);
+        imageWechatSessionButton.addEventListener('click',shareImageToWechatSession);
         webPageWechatSessionButton.addEventListener('click',shareWebPageToWechatSession);
-        
+
         textWechatTimelineButton.addEventListener('click',shareTextToWechatTimeline);
-        imageWechatTimelineButton.addEventListener('click',shareImagesToWechatTimeline);
+        imageWechatTimelineButton.addEventListener('click',shareImageToWechatTimeline);
         webPageWechatTimelineButton.addEventListener('click',shareWebPageToWechatTimeline);
-        
+
         textWeiboButton.addEventListener('click',shareTextToWeibo);
-        imageWeiboButton.addEventListener('click',shareImagesToWeibo);
+        imageWeiboButton.addEventListener('click',shareImageToWeibo);
         webPageWeiboButton.addEventListener('click',shareWebPageToWeibo);
     }
 };
@@ -79,16 +79,16 @@ function shareText(platformType) {
     sharesdk.share(platformType, ShareSDK.ShareType.Text, shareInfo, success, fail);
 }
 
-/** 分享图片，多张使用数组 */
-function shareImages(platformType) {
-    var images = ['https://github.com/zhaolin0801/cordova-sharesdk-demo/blob/master/www/img/Wechat-QRcode.jpeg?raw=true','https://github.com/zhaolin0801/cordova-sharesdk-demo/blob/master/www/img/WechatIMG3.jpeg?raw=true'];
-    var shareInfo = {images:images};
+/** 分享图片,只能分享一张*/
+function shareImage(platformType) {
+    var image = 'https://raw.githubusercontent.com/zhaolin0801/cordova-sharesdk-demo/master/www/img/Wechat-QRcode.jpeg';
+    var shareInfo = {image:image};
     sharesdk.share(platformType, ShareSDK.ShareType.Image, shareInfo, success, fail);
 }
 
 /** 分享网页 */
 function shareWebPage(platformType) {
-    var icon = 'https://github.com/zhaolin0801/cordova-sharesdk-demo/blob/master/www/img/Wechat-QRcode.jpeg?raw=true';
+    var icon = 'https://raw.githubusercontent.com/zhaolin0801/cordova-sharesdk-demo/master/www/img/Wechat-QRcode.jpeg';
     var title = '这是网页的标题';
     var text = '这是网页的内容，android未签名只能分享单张图片到朋友圈';
     var url = 'http://carhot.cn/articles/1';
@@ -100,8 +100,8 @@ function shareTextToWechatSession() {
     shareText(ShareSDK.PlatformType.WechatSession);
 }
 
-function shareImagesToWechatSession() {
-    shareImages(ShareSDK.PlatformType.WechatSession);
+function shareImageToWechatSession() {
+    shareImage(ShareSDK.PlatformType.WechatSession);
 }
 
 function shareWebPageToWechatSession() {
@@ -113,8 +113,8 @@ function shareTextToWechatTimeline() {
     shareText(ShareSDK.PlatformType.WechatTimeline);
 }
 
-function shareImagesToWechatTimeline() {
-    shareImages(ShareSDK.PlatformType.WechatTimeline);
+function shareImageToWechatTimeline() {
+    shareImage(ShareSDK.PlatformType.WechatTimeline);
 }
 
 function shareWebPageToWechatTimeline() {
@@ -125,8 +125,8 @@ function shareTextToWeibo() {
     shareText(ShareSDK.PlatformType.SinaWeibo);
 }
 
-function shareImagesToWeibo() {
-    shareImages(ShareSDK.PlatformType.SinaWeibo);
+function shareImageToWeibo() {
+    shareImage(ShareSDK.PlatformType.SinaWeibo);
 }
 
 function shareWebPageToWeibo() {
