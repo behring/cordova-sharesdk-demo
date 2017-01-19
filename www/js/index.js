@@ -43,6 +43,10 @@ var app = {
         var imageWechatTimelineButton = parentElement.querySelector('.btn-image-wechat-timeline');
         var webPageWechatTimelineButton = parentElement.querySelector('.btn-webpage-wechat-timeline');
         
+        var textWeiboButton = parentElement.querySelector('.btn-text-weibo');
+        var imageWeiboButton = parentElement.querySelector('.btn-image-weibo');
+        var webPageWeiboButton = parentElement.querySelector('.btn-webpage-weibo');
+
         copyLinkButton.addEventListener('click',copyLink);
         
         textWechatSessionButton.addEventListener('click',shareTextToWechatSession);
@@ -52,6 +56,10 @@ var app = {
         textWechatTimelineButton.addEventListener('click',shareTextToWechatTimeline);
         imageWechatTimelineButton.addEventListener('click',shareImagesToWechatTimeline);
         webPageWechatTimelineButton.addEventListener('click',shareWebPageToWechatTimeline);
+        
+        textWeiboButton.addEventListener('click',shareTextToWeibo);
+        imageWeiboButton.addEventListener('click',shareImagesToWeibo);
+        webPageWeiboButton.addEventListener('click',shareWebPageToWeibo);
     }
 };
 
@@ -87,7 +95,7 @@ function shareWebPage(platformType) {
     var shareInfo = {icon:icon, title:title, text:text, url:url};
     sharesdk.share(platformType, ShareSDK.ShareType.WebPage, shareInfo, success, fail);
 }
-
+/**微信好友分享*/
 function shareTextToWechatSession() {
     shareText(ShareSDK.PlatformType.WechatSession);
 }
@@ -100,7 +108,7 @@ function shareWebPageToWechatSession() {
     shareWebPage(ShareSDK.PlatformType.WechatSession);
 }
 
-
+/**微信朋友圈分享*/
 function shareTextToWechatTimeline() {
     shareText(ShareSDK.PlatformType.WechatTimeline);
 }
@@ -111,6 +119,18 @@ function shareImagesToWechatTimeline() {
 
 function shareWebPageToWechatTimeline() {
     shareWebPage(ShareSDK.PlatformType.WechatTimeline);
+}
+/**新浪微博分享*/
+function shareTextToWeibo() {
+    shareText(ShareSDK.PlatformType.SinaWeibo);
+}
+
+function shareImagesToWeibo() {
+    shareImages(ShareSDK.PlatformType.SinaWeibo);
+}
+
+function shareWebPageToWeibo() {
+    shareWebPage(ShareSDK.PlatformType.SinaWeibo);
 }
 
 function success() {
