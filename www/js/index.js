@@ -47,6 +47,11 @@ var app = {
         var imageWeiboButton = parentElement.querySelector('.btn-image-weibo');
         var webPageWeiboButton = parentElement.querySelector('.btn-webpage-weibo');
 
+        var textQQButton = parentElement.querySelector('.btn-text-qq');
+        var imageQQButton = parentElement.querySelector('.btn-image-qq');
+        var webPageQQButton = parentElement.querySelector('.btn-webpage-qq');
+
+        
         copyLinkButton.addEventListener('click',copyLink);
 
         textWechatSessionButton.addEventListener('click',shareTextToWechatSession);
@@ -60,6 +65,10 @@ var app = {
         textWeiboButton.addEventListener('click',shareTextToWeibo);
         imageWeiboButton.addEventListener('click',shareImageToWeibo);
         webPageWeiboButton.addEventListener('click',shareWebPageToWeibo);
+        
+        textQQButton.addEventListener('click',shareTextToQQ);
+        imageQQButton.addEventListener('click',shareImageToQQ);
+        webPageQQButton.addEventListener('click',shareWebPageToQQ);
     }
 };
 
@@ -95,6 +104,7 @@ function shareWebPage(platformType) {
     var shareInfo = {icon:icon, title:title, text:text, url:url};
     sharesdk.share(platformType, ShareSDK.ShareType.WebPage, shareInfo, success, fail);
 }
+
 /**微信好友分享*/
 function shareTextToWechatSession() {
     shareText(ShareSDK.PlatformType.WechatSession);
@@ -120,6 +130,7 @@ function shareImageToWechatTimeline() {
 function shareWebPageToWechatTimeline() {
     shareWebPage(ShareSDK.PlatformType.WechatTimeline);
 }
+
 /**新浪微博分享*/
 function shareTextToWeibo() {
     shareText(ShareSDK.PlatformType.SinaWeibo);
@@ -131,6 +142,19 @@ function shareImageToWeibo() {
 
 function shareWebPageToWeibo() {
     shareWebPage(ShareSDK.PlatformType.SinaWeibo);
+}
+
+/**QQ好友分享*/
+function shareTextToQQ() {
+    shareText(ShareSDK.PlatformType.QQFriend);
+}
+
+function shareImageToQQ() {
+    shareImage(ShareSDK.PlatformType.QQFriend);
+}
+
+function shareWebPageToQQ() {
+    shareWebPage(ShareSDK.PlatformType.QQFriend);
 }
 
 function success() {
