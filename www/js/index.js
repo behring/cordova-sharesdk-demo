@@ -138,5 +138,9 @@ function success() {
 }
 
 function fail(msg) {
-    alert('failed: ' + msg);
+    if(msg.state == ShareSDK.ResponseState.Cancel) {
+        alert('cancel！');
+    }else {
+        alert('failed！: ' + msg.error);
+    }
 }
