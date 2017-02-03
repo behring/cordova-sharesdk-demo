@@ -33,6 +33,12 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
+
+        var sinaWeiboClientButton = parentElement.querySelector('.btn-sina-weibo-client');
+        var wechatClientButton = parentElement.querySelector('.btn-wechat-client');
+        var qqClientButton = parentElement.querySelector('.btn-qq-client');
+
+
         var copyLinkButton = parentElement.querySelector('.btn-copy-link');
 
         var textWechatSessionButton = parentElement.querySelector('.btn-text-wechat-session');
@@ -51,7 +57,10 @@ var app = {
         var imageQQButton = parentElement.querySelector('.btn-image-qq');
         var webPageQQButton = parentElement.querySelector('.btn-webpage-qq');
 
-        
+        sinaWeiboClientButton.addEventListener('click',checkWeiboClient);
+        wechatClientButton.addEventListener('click',checkWechatClient);
+        qqClientButton.addEventListener('click',checkQQClient);
+
         copyLinkButton.addEventListener('click',copyLink);
 
         textWechatSessionButton.addEventListener('click',shareTextToWechatSession);
@@ -73,6 +82,40 @@ var app = {
 };
 
 app.initialize();
+
+/** 是否安装微博客户端 **/
+function checkWeiboClient() {
+    sharesdk.isInstallClient.promise(ShareSDK.ClientType.SinaWeibo).then(function(isInstall){
+        if(isInstall) {
+            alert("新浪微博客户端已安装");
+        }else {
+            alert("未安装新浪微博客户端");
+        }
+    });
+}
+
+/** 是否安装QQ客户端 **/
+function checkQQClient() {
+    sharesdk.isInstallClient.promise(ShareSDK.ClientType.QQ).then(function(isInstall){
+        if(isInstall) {
+            alert("QQ客户端已安装");
+        }else {
+            alert("未安装QQ客户端");
+        }
+    });
+}
+
+/** 是否安装微信客户端 **/
+function checkWechatClient() {
+    sharesdk.isInstallClient.promise(ShareSDK.ClientType.Wechat).then(function(isInstall){
+        if(isInstall) {
+            alert("微信客户端已安装");
+        }else {
+            alert("未安装微信客户端");
+        }
+    });
+}
+
 
 /** 拷贝连接 */
 function  copyLink() {
